@@ -1,0 +1,18 @@
+[package]
+name = "step-05"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[dependencies]
+anyhow = "1.0.72"
+axum = "0.6.19"
+axum-debug = "0.3.3"
+axum-macros = "0.3.8"
+chrono = {version="0.4.26", features=["serde"]}
+hyper = "0.14.27"
+serde = {version="1.0.174", features=["derive"]}
+serde_json = "1.0.103"
+sqlx = {version="0.7.1", features=["postgres", "runtime-tokio-rustls", "chrono"]}
+tokio = {version="1.29.1", features=["full"]}
+tower = "0.4.13"

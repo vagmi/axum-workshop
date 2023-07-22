@@ -1,10 +1,15 @@
 use axum::{Router, Json, extract::{State, Path}, routing::{get, post}};
 use crate::{state::AppState, db::{Todo, CreateTodo}};
+use crate::auth::Auth;
 use crate::error::Result;
 use crate::db as db;
 
 #[axum_macros::debug_handler]
-pub async fn list_todos(State(app_state): State<AppState>) -> Result<Json<Vec<Todo>>> {
+pub async fn list_todos(
+    State(app_state): State<AppState>,
+    Auth(user): Auth
+) -> Result<Json<Vec<Todo>>> {
+    tracing::info!("user: {:?}", user);
     let todos = db::list_todos(app_state.pool.clone()).await?;
     Ok(Json(todos))
 }

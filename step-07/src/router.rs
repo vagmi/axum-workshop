@@ -1,6 +1,7 @@
 mod todos;
 
 use axum::{Router, routing::get, extract::Path};
+use tower_http::trace::TraceLayer;
 
 use crate::{greeting::greet, state::AppState};
 
@@ -17,6 +18,7 @@ pub fn build_router(app_state: AppState) -> Router {
             .route("/", get(hello_world))
            .route("/greet/:name", get(hello_name))
            .nest("/api/todos", todos::build_router())
+           .layer(TraceLayer::new_for_http())
            .with_state(app_state)
            
 }

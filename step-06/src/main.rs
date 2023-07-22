@@ -2,6 +2,7 @@ mod greeting;
 mod router;
 mod state;
 mod db;
+mod error;
 
 use axum::Server;
 

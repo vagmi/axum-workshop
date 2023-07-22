@@ -1,5 +1,5 @@
 use serde::{Serialize, Deserialize};
-use anyhow::Result;
+use crate::error::Result;
 use sqlx::{PgPool, FromRow};
 
 #[derive(Serialize, Deserialize, Debug, FromRow)]

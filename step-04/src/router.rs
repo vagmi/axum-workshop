@@ -44,7 +44,7 @@ mod tests {
                          .body(Body::empty()).unwrap()).await.unwrap();
         assert_eq!(resp.status(), 200);
         let content = resp.into_body();
-        let resp_body = hyper::body::to_bytes(content).await.unwrap();
+        let resp_body = axum::body::to_bytes(content, usize::MAX).await.unwrap();
         assert_eq!(resp_body, "Hello, tokio world!".as_bytes());
     }
 }
